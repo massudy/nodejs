@@ -1,4 +1,4 @@
-const notas = [7,1,4]
+const notas = []
 
  function CalcularMedia(Soma,QntdTotal){
    return Soma/QntdTotal;
@@ -17,9 +17,6 @@ return ResultadoFinal;
 
 }
 
-
-
-
 function StatusArray(){
     media = CalcularMedia(SomarNotas(),notas.length);
     console.log(`Existem ${notas.length} notas registradas, Resultando em uma média de ${media}`);
@@ -36,9 +33,3 @@ AdicionarNota(4);
 StatusArray();
 AdicionarNota(7);
 StatusArray();
-
-
-
-
-
-
