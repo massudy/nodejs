@@ -26,6 +26,7 @@ console.log(`Nome do Grupo : ${Clientes[2][indice]}`)
 //Adicionando novos clientes
 NovoCliente("Daniel","danielmassud@outlook.com","Futeinfo");
 NovoCliente("Natanael","natanaelespindola@outlook.com","Betzord");
+NovoCliente("Marcelinho","Marcelo@outlook.com","Marcelo TIPS");
 
 //Mostrando toda a array/table e depois buscando um cliente de dentro da base pelo nome
 console.table(Clientes);
