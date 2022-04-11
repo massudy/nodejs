@@ -21,11 +21,13 @@ console.log(`Nome do Grupo : ${Clientes[2][indice]}`)
 } else { console.log(`Não existe nenhum ${NomeBusca} na base de clientes`)}
 
 }
+// Sequencia de ações abaixo
 
-
-    NovoCliente("Daniel","danielmassud@outlook.com","Futeinfo");
+//Adicionando novos clientes
+NovoCliente("Daniel","danielmassud@outlook.com","Futeinfo");
 NovoCliente("Natanael","natanaelespindola@outlook.com","Betzord");
 
+//Mostrando toda a array/table e depois buscando um cliente de dentro da base pelo nome
 console.table(Clientes);
 BuscarCliente("Daniel")
 
