@@ -1,3 +1,4 @@
+// Aqui eu to definindo o objeto base de um cliente e seus atributos
 function Cliente(nome,email){
 this.nome = nome
 this.email = email
@@ -8,6 +9,7 @@ console.log(`O cliente ${this.nome} criou o grupo ${nomegrupo} com sucesso !`)
 }
 }
 
+// Definindo objeto base de um grupo e seus atributos
 function Grupo(dono,nome,descricao,preco){
     this.dono = dono
     this.nome = nome
@@ -15,14 +17,20 @@ function Grupo(dono,nome,descricao,preco){
     this.preco = preco
 }
 
+/* função para registrar um novo cliente, criando uma nova instancia na
+array Clientes onde ta armazenado os clientes
+*/
 function RegistrarCliente(nome,email){
     Clientes.push(new Cliente(nome,email))
     console.log(`O cliente ${nome} foi registrado com sucesso !`)
 }
 
+// array que tem cada cliente unico criado
 let Clientes = []
 
-//Escopo abaixo
+
+
+//Escopo de teste abaixo
 
 RegistrarCliente("Daniel","danielmassud@outlook.com")
 RegistrarCliente("Marcelo","marcelinhotips@hotmail.com")
