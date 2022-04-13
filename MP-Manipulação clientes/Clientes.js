@@ -85,11 +85,58 @@ for (i = 0; i < Clientes.length; i++){
 for(i2 = 0; i2 < Clientes[i].Grupos.length;i2++){
 ListaGerada.push(Clientes[i].Grupos[i2])
 }
-
+}
+return ListaGerada
 }
 
+//recebe uma array com os numeros/elementos e um index de inicio e retorna o index do maior valor
+function IndexMaiorElemento(elementos,inicio){
+let MaiorValor = 0
+let IndexMaior   
 
-console.table(ListaGerada)
+for(i = inicio; i < elementos.length;i++){
+    if(elementos[i] > MaiorValor){
+        MaiorValor = elementos[i]
+        IndexMaior = i
+    }
+    }
+return IndexMaior
+}
+// função que recebe um filtro que pode ser "receita" ou "membro" e faz um sort e retorna uma array dos grupos ordenadas pelo filtro escolhido
+function RankingGrupos(filtro){
+    //Variaveis iniciais
+    let ListaGerada = []
+    let ArryNumeros = []
+    let Maior
+    RNKListaGrupos = ListarTodosGrupos()
+    TamanhoLista = RNKListaGrupos.length
+
+    // se o filtro for por receita do grupo
+    if(filtro == "receita"){
+         for(i = 0;i < TamanhoLista; i++){
+     ArryNumeros.push(RNKListaGrupos.at(i).ReceitaGrupo)
+      }
+           for (i2 = 0; i2 < TamanhoLista; i2++){
+            Maior = IndexMaiorElemento(ArryNumeros,0)
+            ListaGerada.push(RNKListaGrupos.at(Maior))
+                RNKListaGrupos.splice(Maior,1)
+                ArryNumeros.splice(Maior,1)
+            } 
+ } 
+     // se o filtro for por membro do grupo
+     else if (filtro == "membros"){
+    for(i = 0;i < TamanhoLista; i++){
+        ArryNumeros.push(RNKListaGrupos.at(i).Membros)
+         }
+              for (i2 = 0; i2 < TamanhoLista; i2++){
+               Maior = IndexMaiorElemento(ArryNumeros,0)
+               ListaGerada.push(RNKListaGrupos.at(Maior))
+                   RNKListaGrupos.splice(Maior,1)
+                   ArryNumeros.splice(Maior,1)
+               } 
+ }
+
+return ListaGerada
 }
 
 
@@ -110,7 +157,6 @@ console.log(`----------- Inicio Escopo -------------
 // escopo abaixo
 
 
-
 ImprimirInicio()
 RegistrarCliente("Daniel","danielmassud@outlook.com")
 RegistrarCliente("André","andre123@hotmail.com")
@@ -126,13 +172,22 @@ ListarGrupos(0)
 ListarGrupos(1)
 Clientes[0].AdicionarMembros(0,10)
 ListarGrupos(0)
-ListarTodosGrupos()
+console.table(ListarTodosGrupos())
 Clientes[0].AlterarEmail("dandanfilho@hotmail.com")
 ListarClientes()
-RemoverCliente(0)
-ListarClientes()
-ListarTodosGrupos()
+console.table(ListarTodosGrupos())
 
+console.table(RankingGrupos("receita"))
+
+console.table(RankingGrupos("membros"))
+
+Clientes[2].CriarGrupo("Marcelo Trader","Sala do Marcelo FOREX",199,70)
+Clientes[3].CriarGrupo("Alê Emagrecimento","Dicas diarias de emagrecimento",29,328)
+
+console.table(ListarTodosGrupos())
+console.table(RankingGrupos("receita"))
+
+console.table(RankingGrupos("membros"))
 
 
 
