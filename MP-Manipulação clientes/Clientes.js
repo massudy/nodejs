@@ -62,6 +62,13 @@ function RegistrarCliente(nome,email){
 console.log(`O cliente ${nome} foi registrado no sistema com sucesso !`)    
 }
 
+// recebe o index do cliente e remove ele da base
+function RemoverCliente(cliente){
+let ClienteRemovido = Clientes[cliente].Nome
+    Clientes.splice(cliente,1)
+console.log(`O cliente ${ClienteRemovido} foi removido com sucesso`)
+}
+
 //Retorna o um log table com a lista de clientes no sistema
 function ListarClientes(){
 console.table(Clientes)
@@ -71,11 +78,24 @@ function ListarGrupos(cliente){
     console.table(Clientes[cliente].Grupos)
 }
 
+//Função que retorna todos os grupos de todos os clientes
+function ListarTodosGrupos(){
+let ListaGerada = []
+for (i = 0; i < Clientes.length; i++){
+for(i2 = 0; i2 < Clientes[i].Grupos.length;i2++){
+ListaGerada.push(Clientes[i].Grupos[i2])
+}
+
+}
+
+
+console.table(ListaGerada)
+}
+
+
 // função que imprime um espaçador de inicio
 function ImprimirInicio(){
 console.log(`----------- Inicio Escopo -------------
-
-
 
 
 
@@ -106,10 +126,12 @@ ListarGrupos(0)
 ListarGrupos(1)
 Clientes[0].AdicionarMembros(0,10)
 ListarGrupos(0)
-
-
-
-
+ListarTodosGrupos()
+Clientes[0].AlterarEmail("dandanfilho@hotmail.com")
+ListarClientes()
+RemoverCliente(0)
+ListarClientes()
+ListarTodosGrupos()
 
 
 
